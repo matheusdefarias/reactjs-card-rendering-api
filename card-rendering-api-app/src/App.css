@@ -1,3 +1,18 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+
+  margin-top: 100px;
 }
+
+h1 {
+  text-align: center;
+}
+
+
+
+

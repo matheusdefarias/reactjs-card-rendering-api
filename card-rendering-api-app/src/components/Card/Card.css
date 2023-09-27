@@ -1,0 +1,60 @@
+.card-container {
+  background-color: black;
+  border: 3px solid #bfbbbb;
+  border-radius: 13px;
+  max-width: 260px;
+}
+
+.card-container img {
+  width: 256px;
+  height: 144px;
+}
+
+h1,
+h2,
+p {
+  color: rgb(160, 160, 160);
+}
+
+p {
+  margin: 15px;
+}
+
+img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+button {
+  margin: 8px;
+  margin-bottom: 15px;
+
+  width: 100px;
+  height: 35px;
+
+  border-radius: 5px;
+
+  border: none;
+
+  cursor: pointer;
+}
+
+.button-delete {
+  background-color: rgb(114, 59, 59);
+  color: white;
+  font-weight: 700;
+}
+
+.button-delete:hover {
+  background-color: rgb(61, 31, 31);
+}
+
+.button-edit {
+  background-color: rgb(59, 85, 114);
+  color: white;
+  font-weight: 700;
+}
+
+.button-edit:hover {
+  background-color: rgb(34, 49, 66);
+}
