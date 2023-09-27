@@ -1,0 +1,28 @@
+{
+    "cards": [
+      {
+        "id": 1,
+        "title": "John.x.Doe",
+        "description": 32,
+        "imageUrl": "Jazz"
+      },
+      {
+        "id": 2,
+        "title": "John.x.Doe",
+        "description": 32,
+        "imageUrl": "Jazz"
+      },
+      {
+        "id": 3,
+        "title": "John.x.Doe",
+        "description": 32,
+        "imageUrl": "Jazz"
+      },
+      {
+        "id": 4,
+        "title": "John.x.Doe",
+        "description": 32,
+        "imageUrl": "Jazz"
+      }      
+    ]
+  }
