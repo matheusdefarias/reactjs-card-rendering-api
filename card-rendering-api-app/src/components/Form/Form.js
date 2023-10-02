@@ -11,34 +11,28 @@ const Form = ({
   handleHttpRequest,
   loading,
 }) => {
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  
+  const card = {
+    title,
+    description,
+    imageUrl,
+  };
 
-    const card = {
-      title,
-      description,
-      imageUrl,
-    };
-
-    handleHttpRequest("POST", card);
-
+  const clearFields = () => {
     setTitle("");
     setDescription("");
     setImageUrl("");
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    handleHttpRequest("POST", card);
+    clearFields();
+  };
+
   const handleEdit = async (e) => {
-    const card = {
-      title,
-      description,
-      imageUrl,
-    };
-
-    handleHttpRequest("EDIT", card);
-
-    setTitle("");
-    setDescription("");
-    setImageUrl("");
+    handleHttpRequest("PUT", card);
+    clearFields();
   };
 
   return (
@@ -73,7 +67,7 @@ const Form = ({
           />
         </label>
         <input type="submit" value="Criar" />
-        {loading && <p>Aguarde...</p>}
+        {loading && <p>Salvando...</p>}
         {!loading && <button onClick={() => handleEdit()}>Salvar</button>}
       </form>
     </div>

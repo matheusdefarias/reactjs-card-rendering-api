@@ -48,50 +48,35 @@ function App() {
     setDescription(responseJson.description);
     setImageUrl(responseJson.imageUrl);
     setIdUpdate(id);
-
-    console.log(responseJson);
   };
 
   const handleHttpRequest = async (method, data) => {
-    if (method === "DELETE") {
-      const config = {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
+    const config = {
+      method: method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
+    if (method === "DELETE") {
       const deleteUrl = `${url}/${data}`;
       const res = await fetch(deleteUrl, config);
       const json = await res.json();
 
       setCardsState(json);
     } else if (method === "POST") {
-      const config = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      };
+      config.body = JSON.stringify(data);
 
       let fetchOptions = [url, config];
       const res = await fetch(...fetchOptions);
       const json = await res.json();
 
       setCardsState(json);
-    } else if (method === "EDIT") {
+    } else if (method === "PUT") {
       setLoading(true);
       const putUrl = `${url}/${idUpdate}`;
-      console.log(data);
-      console.log(putUrl);
-      const config = {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      };
+
+      config.body = JSON.stringify(data);
 
       const res = await fetch(putUrl, config);
       const json = await res.json();
@@ -100,8 +85,6 @@ function App() {
       setLoading(false);
     }
   };
-
-  console.log(cards);
 
   return (
     <div>
