@@ -1,7 +1,7 @@
 import React from "react";
 import "./Card.css";
 
-const Card = ({
+export const Card = ({
   id,
   title,
   description,
@@ -28,5 +28,3 @@ const Card = ({
     </>
   );
 };
-
-export default Card;

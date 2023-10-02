@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 import "./App.css";
-import Card from "./components/Card/Card";
-import Form from "./components/Form/Form";
+import { Card } from "./components/Card";
+import { Form } from "./components/Form";
 
 function App() {
   const url = "http://localhost:3001/cards";

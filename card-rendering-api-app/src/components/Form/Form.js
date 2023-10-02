@@ -1,7 +1,7 @@
 import React from "react";
 import "./Form.css";
 
-const Form = ({
+export const Form = ({
   title,
   description,
   imageUrl,
@@ -73,5 +73,3 @@ const Form = ({
     </div>
   );
 };
-
-export default Form;
