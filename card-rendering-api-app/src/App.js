@@ -64,7 +64,10 @@ function App() {
       const json = await res.json();
 
       setCardsState(json);
-    } else if (method === "POST") {
+      return;
+    }
+
+    if (method === "POST") {
       config.body = JSON.stringify(data);
 
       let fetchOptions = [url, config];
@@ -72,18 +75,20 @@ function App() {
       const json = await res.json();
 
       setCardsState(json);
-    } else if (method === "PUT") {
-      setLoading(true);
-      const putUrl = `${url}/${idUpdate}`;
-
-      config.body = JSON.stringify(data);
-
-      const res = await fetch(putUrl, config);
-      const json = await res.json();
-
-      setCardsState(json);
-      setLoading(false);
+      return;
     }
+
+    //method === "PUT"
+    setLoading(true);
+    const putUrl = `${url}/${idUpdate}`;
+
+    config.body = JSON.stringify(data);
+
+    const res = await fetch(putUrl, config);
+    const json = await res.json();
+
+    setCardsState(json);
+    setLoading(false);
   };
 
   return (
