@@ -2,36 +2,35 @@ import React from "react";
 import "./Form.css";
 
 export const Form = ({
-  title,
-  description,
-  imageUrl,
-  setTitle,
-  setDescription,
-  setImageUrl,
+  // title,
+  // description,
+  // imageUrl,
+  // setTitle,
+  // setDescription,
+  // setImageUrl,
+  cardInfo,
+  setCardInfo,
   handleHttpRequest,
   loading,
 }) => {
   
-  const card = {
-    title,
-    description,
-    imageUrl,
-  };
-
   const clearFields = () => {
-    setTitle("");
-    setDescription("");
-    setImageUrl("");
+    setCardInfo((prevInput) => ({
+      title:'', description:'', imageUrl:''
+    }))
+    // setTitle("");
+    // setDescription("");
+    // setImageUrl("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    handleHttpRequest("POST", card);
+    handleHttpRequest("POST", cardInfo);
     clearFields();
   };
 
   const handleEdit = async (e) => {
-    handleHttpRequest("PUT", card);
+    handleHttpRequest("PUT", cardInfo);
     clearFields();
   };
 
@@ -43,27 +42,30 @@ export const Form = ({
           Title:
           <input
             type="text"
-            value={title}
+            value={cardInfo.title}
             name="title"
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => {setCardInfo({...cardInfo, title: e.target.value})}}
+            //onChange={(e) => setCardInfo(e.target.value)}
           />
         </label>
         <label>
           Description:
           <input
             type="text"
-            value={description}
+            value={cardInfo.description}
             name="description"
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={(e) => {setCardInfo({...cardInfo, description: e.target.value})}}
+            //onChange={(e) => setCardInfo(e.target.value)}
           />
         </label>
         <label>
           URL da imagem:
           <input
             type="text"
-            value={imageUrl}
+            value={cardInfo.imageUrl}
             name="imageUrl"
-            onChange={(e) => setImageUrl(e.target.value)}
+            onChange={(e) => {setCardInfo({...cardInfo, imageUrl: e.target.value})}}
+            //onChange={(e) => setCardInfo(e.target.value)}
           />
         </label>
         <input type="submit" value="Criar" />
