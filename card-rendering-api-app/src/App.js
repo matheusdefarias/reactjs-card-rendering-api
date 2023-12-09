@@ -10,9 +10,15 @@ function App() {
   const [cards, setCards] = useState([]);
   const [cardsState, setCardsState] = useState(null);
 
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [cardInfo, setCardInfo] = useState({
+    id: "",
+    title: "",
+    description: "",
+    imageUrl: "",
+  });
+  // const [title, setTitle] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [imageUrl, setImageUrl] = useState("");
 
   const [idUpdate, setIdUpdate] = useState(null);
 
@@ -40,16 +46,23 @@ function App() {
   }, [cardsState]);
 
   const retrieveData = async (id) => {
-    const putUrl = `${url}/${id}`;
-    const response = await fetch(putUrl);
-    const responseJson = await response.json();
+    var retrievedCard = (cards.filter(obj => {
+      return obj.id === id
+    }))
+    console.log(retrievedCard);
+    // const putUrl = `${url}/${id}`;
+    // const response = await fetch(putUrl);
+    // const responseJson = await response.json();
+    
+    setCardInfo({retrievedCard});
 
-    setTitle(responseJson.title);
-    setDescription(responseJson.description);
-    setImageUrl(responseJson.imageUrl);
     setIdUpdate(id);
+    
+    // setTitle(responseJson.title);
+    // setDescription(responseJson.description);
+    // setImageUrl(responseJson.imageUrl);
   };
-
+  
   const handleHttpRequest = async (method, data) => {
     const config = {
       method: method,
@@ -68,6 +81,8 @@ function App() {
     }
 
     if (method === "POST") {
+      delete data.id;
+
       config.body = JSON.stringify(data);
 
       let fetchOptions = [url, config];
@@ -81,7 +96,7 @@ function App() {
     //method === "PUT"
     setLoading(true);
     const putUrl = `${url}/${idUpdate}`;
-
+    console.log(putUrl);
     config.body = JSON.stringify(data);
 
     const res = await fetch(putUrl, config);
@@ -108,12 +123,14 @@ function App() {
         ))}
       </div>
       <Form
-        title={title}
-        description={description}
-        imageUrl={imageUrl}
-        setTitle={setTitle}
-        setDescription={setDescription}
-        setImageUrl={setImageUrl}
+        // title={cardInfo.title}
+        // description={cardInfo.description}
+        // imageUrl={cardInfo.imageUrl}
+        // setTitle={setTitle}
+        // setDescription={setDescription}
+        // setImageUrl={setImageUrl}
+        cardInfo={cardInfo}
+        setCardInfo={setCardInfo}
         handleHttpRequest={handleHttpRequest}
         loading={loading}
       />
